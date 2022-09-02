@@ -62,3 +62,7 @@ ego.up <- enrichGO(gene = names(sig.up.LFC),
                       qvalueCutoff = 0.2)
 ```
 
+#### Html Results  
+__(For reference only)__ till I update the enrichment results pages
+
+Please click [here](https://sydney-informatics-hub.github.io/training-nfcore-rnaseq.parttwo/rnaseq_DE_Full_matrix_DryRun) to see the Differential expression analsysis in RStudio.
