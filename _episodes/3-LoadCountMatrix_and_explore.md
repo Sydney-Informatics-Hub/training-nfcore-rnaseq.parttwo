@@ -200,11 +200,16 @@ plotPCA(vst)
 ```
 
 <p align="center">
-  <img src="{{ page.root }}/fig/PCA.png" style="margin:10px;height:350px"/>
-  </p>
+  <img src="{{ page.root }}/fig/PCA.png" style="margin:10px;height:350px"/></p>
+</p>
+
+### Why choose best the dimension?   
+<p align="center">
+  <img src="{{ page.root }}/fig/Prince_William_dimensionality.png" style="margin:10px;height:350px"/></p>
+</p>
+
   
-  
- ### Scree plot
+### Scree plot
 - The Principal Component matrix has the same dimensions as the original data matrix; however, many of the PCs may not be informative. A reduction in the number of PCs is typically required. 
 - To do so, it is useful to examine the amount of variance explained by each new PC vector.
 - A scree plot is a line plot of the principal components in an analysis. 
