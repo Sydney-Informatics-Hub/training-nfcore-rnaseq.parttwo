@@ -26,7 +26,7 @@ keypoints:
 #### Using R/RStudio IDE for DE analysis
 - The gene-count matrix which was generated using the nefcore-rnaseq pipline can be used to perform statistical analyses and determine differentially expressed (DE) genes and pathways.
 - Multiple independant packages/libraries have been developed in [R-programming](https://www.r-project.org/), which can be used for performing various kinds of 'omics' analysis. 
-- R packages such as [DeSeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), [EdgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html) etc are used for identification of differencially expressed (DE) genes. We will be using DeSeq2 for our analysis.
+- R packages such as [DeSeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), [EdgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html) etc are used for identification of differencially expressed (DE) genes. Today we will be using DeSeq2.
 
 
 ### Run RStudio on the Nimbus trainee VM
