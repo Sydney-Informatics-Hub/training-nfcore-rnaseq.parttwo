@@ -206,7 +206,7 @@ plotPCA(vst)
 ### Why choose best the dimension?   
 <p align="center">
   <img src="{{ page.root }}/fig/Prince_William_dimensionality.png" style="margin:10px;height:350px"/></p>
-</p>
+
 
   
 ### Scree plot
