@@ -26,11 +26,6 @@ keypoints:
 - What next, using the gene-count matrix?
 
 
-![image](https://user-images.githubusercontent.com/12062345/188776561-58aa8c92-2e0c-4cb5-8e68-3eca048cda58.png)
-![image](https://user-images.githubusercontent.com/12062345/188776414-06ecaef2-5dc2-4051-af97-e2890a0d4a96.png)
-![image](https://user-images.githubusercontent.com/12062345/188776448-d7bd4a49-aa96-4283-a843-d2e77cfdd89e.png)
-![image](https://user-images.githubusercontent.com/12062345/188776589-3a87e363-cc66-49c8-bf11-015ea4017ac6.png)
-![image](https://user-images.githubusercontent.com/12062345/188776494-51494b2b-8ac7-4fb6-ba2d-d92bd07ba351.png)
 
 
 **Notes**   
