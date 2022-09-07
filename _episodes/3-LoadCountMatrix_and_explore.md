@@ -200,7 +200,7 @@ plotPCA(vst)
 
 <p align="center">
   <img src="{{ page.root }}/fig/PCA.png" style="margin:10px;height:350px"/></p>
-</p>
+
 
 ### Why choose best the dimension?   
 <p align="center">
