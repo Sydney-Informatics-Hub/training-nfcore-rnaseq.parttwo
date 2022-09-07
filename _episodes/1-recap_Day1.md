@@ -20,10 +20,11 @@ keypoints:
 </p>
 
 - What is RNA sequencing and what are the main applications of RNA-seq?
-- How does it help to analyze RNA-seq data using the nfcore-rnaseq pipeline?
+- What are the typical steps in a RNA-seq differential expression analysis pipeline?
+- Why do we require workflow managers such as nextflow for bioinformatics pipelines?
 - How to run the nfcore-rnaseq pipeline on the Pawsey Nimbus VM?
 - What are the important features of the nfcore-rnaseq pipeline?
-- What next, using the gene-count matrix?
+- What to do next; using the gene-count matrix?
 
 
 
