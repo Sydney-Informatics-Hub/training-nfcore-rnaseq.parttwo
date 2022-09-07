@@ -25,6 +25,9 @@ keypoints:
 - What are the important features of the nfcore-rnaseq pipeline?
 - What next, using the gene-count matrix?
 
+![image](https://user-images.githubusercontent.com/12062345/188776190-f2dec248-5993-45ac-82f0-f00c8ff86a9f.png)
+
+
 **Notes**   
 <sup id="f1">1[↩](#a1)</sup> Here is a list of ['nfcore pipelines'](https://nf-co.re/pipelines/).
 
