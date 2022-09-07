@@ -11,7 +11,7 @@ objectives:
 
 keypoints:
 - We generated a gene-count matrix using the nfcore-rnaseq pipeline, using a single command.
-- The gene-count matrix will be used today for identifying differentially expressed genes using DeSEq2.
+- The gene-count matrix will be used today for identifying differentially expressed genes.
 
 ---
 
