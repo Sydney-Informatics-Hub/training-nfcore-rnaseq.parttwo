@@ -1,23 +1,36 @@
 ---
-title: Setup
-layout: page
-root: "."
+title: "Setup"
+teaching: 0
+exercises: 15
+questions:
+- "How do I securely log into a Nimbus VM instance?"
+objectives:
+- "Successfully log in to a Nimbus instance using ssh."
+keypoints:
+- Nimbus VM instances from Pawsey provide on-demand access for scalability.
+- We use a ssh client to connect to a Linux instance.
 ---
 
-# 1. Get a shell terminal emulator
+## The Pawsey Supercomputing Research Centre
+The [Pawsey Supercomputing Research Centre](https://pawsey.org.au/about-us/about-pawsey/) is one of two, Tier-1, High Performance Computing facilities in Australia, whose primary function is to accelerate scientific research for the benefit of the nation. Pawsey service and expertise in supercomputing, data, cloud services and visualisation, enables research across a spread of domains including astronomy, life sciences, medicine, energy, resources and artificial intelligence.
 
-To connect to Artemis HPC, and follow this lesson, you will need a **'terminal emulator'** program installed on your computer. Often just called a 'terminal', or 'shell terminal', 'shell client', terminal emulators give you a window with a _command line interface_ through which you can send commands to be executed by your computer.
+## Bioinformatics with Nimbus
+Nimbus cloud from Pawsey can help the reserachers scale their problems and make them solvable in a reasonable timeframe. Nimbus instance is a virtual machine (VM) located on Nimbus servers, that you use in place of your laptop or desktop computer. Nimbus is a useful solution for bioinformatics applications that may not be suitable for large-scale HPC machines including:
+- Developing and refining scalable workflows in prepration for HPC allocation applications. 
+- Workflows with long runtimes that excede wall time queue limits on HPC facilities. 
+- Complex data-bound workflows with variable compute resource profiles that are common in bioinformatics pipelines.
 
-## A. Linux systems
+## Set up your laptop 
 
-If you use Linux, then chances are you already know your shell and how to use it. Basically, just open your preferred terminal program and off you go! An X-Window server (X11) may also be useful if you want to be able to use GUIs; again, if you're using Linux you probably have one, and if you don't have one, it's probably because you intentionally disabled it!
+### Get a shell terminal emulator
 
-Connection to Artemis can be made via ssh by issuing the following command on the shell:
-~~~
-ssh -X <unikey>@hpc.sydney.edu.au
-~~~
+To connect to the Nimbus VM, and follow this lesson, you will need a **'terminal emulator'** program installed on your computer. Often just called a 'terminal', or 'shell terminal', 'shell client', terminal emulators give you a window with a _command line interface_ through which you can send commands to be executed by your computer.
 
-## B. OSX (Mac computers and laptops)
+#### A. Linux systems
+
+If you use Linux, then chances are you already know your shell and how to use it. Basically, just open your preferred terminal program and off you go! An X-Window server (X11) may also be useful if you want to be able to use GUIs; again, if you're using Linux you probably have one, and if you don't have one, it's probably because you intentionally disabled it! 
+
+#### B. OSX (Mac computers and laptops)
 
 Mac operating systems come with a terminal program, called Terminal. Just look for it in your Applications folder, or hit Command-Space and type 'terminal'. You may find that other, 3rd party terminal programs are more user-friendly and powerful -- I use [Iterm2](https://www.iterm2.com/).
 
@@ -28,91 +41,76 @@ Mac operating systems come with a terminal program, called Terminal. Just look f
 
 We also recommend installing [XQuartz](https://www.xquartz.org/), which will replace OSX's native X-Window server. XQuartz has some extra features that may offer better performance when using GUI programs. You'll need to log out and back in again after installing XQuartz in order for it to activate.
 
-Connection to Artemis can be made via ssh by issuing following command on in the terminal:
-~~~
-ssh -X <unikey>@hpc.sydney.edu.au
-~~~
-
-## C. Windows
+#### C. Windows
 
 If you're using a Windows machine, don't panic! You might not have used 'CMD' since Windows 95 but, rest assured, Windows still has a couple of terminal programs and shells buried in the Programs menu.
+However, those aren't going to work for us, as you'll need extra programs and utilities to connect to Nimbus, such as an _SSH_ implementation. 
 
-However, those aren't going to work for us, as you'll need extra programs and utilities to connect to Artemis, such as an _SSH_ implementation. To use Artemis on Windows, you have a couple of options:
+- To use Nimbus on a Windows computer, you have a couple of options, as shown below. 
+- We recommend using the `MobaXterm` terminal application. 
 
-### i. PuTTY (Recommended)
-
-PuTTY, an SSH and telnet client, is a good simple option. However, note that PuTTY **does not** provide an X11 server, so you won't be able to use GUI programs on Artemis with _just_ PuTTY.
-
-Head to [https://putty.org](https://putty.org) and download PuTTY. You can install it to your computer, or just download the 'binary' and run it directly. Create a new session for use with Artemis as follows:
-
-1. Fill in the connection details:
-  - Host Name: **hpc.sydney.edu.au**
-  - Port: **22**
-  - Connection type: **SSH**   
-
-   <img src="{{ page.root }}/fig/s_putty.png" style="margin:10px;height:400px" >
-2. Name this session **"Artemis"** and click 'Save'
-
-### ii. MobaXterm
+##### i. MobaXterm
 [MobaXterm](https://mobaxterm.mobatek.net/download.html) offers a rich experience as a full-featured X-server and terminal emulator for ssh connections, the free version is more than adequate.
 
-### iii. X-Win32
+`Directions` to install and start using MobaXterm
 
-[X-Win32](https://www.starnet.com/xwin32/) is full-featured X-server and terminal emulator for Windows. USyd [provides a license](https://sydneyuni.service-now.com/sm?id=kb_article_view_sec&sysparm_article=KB0011959&sys_kb_id=68c2fee6dbb7d450b924456a3a96195f&spa=1) for it; however, the download link is restricted to staff, so students, get a copy [here]({{ page.root }}/data/x-win140-54sf.exe). Install, and follow the instructions on the USyd-ICT page to activate -- you'll need to be on the USyd network or [VPN](https://sydneyuni.service-now.com/sm?id=kb_article_view&sysparm_article=KB0011049&sys_kb_id=9e86e1a3dbdf0c50e35b89e4059619b9) to do so. 
+- Go to https://mobaxterm.mobatek.net/download.html
+- Under ‘Home Edition’ select the `Download now` button
+- Select the MobaXterm Home Edition (Installer edition)
+- Once the program is downloaded, install it as you would any other windows program
+- Once the program is installed, start the MobaXterm program.  
+- From this screen, click on ‘start local terminal’
+- Type in: ssh training@XXX.XXX.XX
+- When prompted, enter your password
 
-### iv. WSL and Ubuntu
+##### ii. PuTTY
+PuTTY, an SSH and telnet client, is a good simple option. However, note that PuTTY **does not** provide an X11 server, so you won't be able to use GUI programs with _just_ PuTTY. Head to [https://putty.org](https://putty.org) and download PuTTY. You can install it to your computer, or just download the 'binary' and run it directly. 
 
+##### iii. WSL and Ubuntu
 Install Ubuntu or some other Linux distro on the Windows Subsystem for Linux see [here for details](https://ubuntu.com/tutorials/tutorial-ubuntu-on-windows#1-overview). This one will give you a full suite of Linux functions and I like it for emulating Linux.
 
-<br>
 
-# 2. Get a GUI file transfer application
-If you are not fully comfortable moving data on the command line you can use various file transfer applications. Mac OSX and Linux have the command line tools built in already. Windows users will need to enable WSL and install a Linux distro (or CYGWIN or equivalent) or else use the interactive platforms below.
+## Connecting to a Nimbus instance
 
-## A. FileZilla (Recommended)
-This application can be installed on Windows, Mac OSX and Linux. Use it to make SFTP connections and move data between local and remote machines. Be wary of bundled bloatware on installation. [https://filezilla-project.org/](https://filezilla-project.org/)
+Loggin into a Nimbus instance requires three things:
+1. The **IP Address** (virtual address) of your instance. It is a series of numbers i.e. ###.###.###.###. Every participant is provided with an separate IP Address which points to an independant VM instance.
+2. Your **login name**: this depends on the name of the Linux OS image you selected and in our case it is ```training```.
+3. Your **password**. Every participant is provided with a password
 
-## B. WinSCP
-Windows only, a great stand alone application to move data between local and remote computers. 
-[https://winscp.net/](https://winscp.net/eng/index.php)
+<figure>
+  <img src="{{ page.root }}/fig/Pawsey_VM_instance.png" style="margin:10px;height:300px"/>
+  <figcaption> SSH connection to Nimbus VM instance </figcaption>
+</figure><br>
 
-<br>
+### Logging-in using a terminal
+The primary means by which we can connect to this VM is via a Secure Shell (SSH) over a Command Line Interface (CLI). Type the following into your terminal, using your login name and the instance’s IP address:
 
-# 3. Off-campus access
+```
+ssh training@###.###.###.###
+```
 
-If you're attempting this training by yourself, or following on **[Zoom](https://uni-sydney.zoom.us/)**, _off-campus_ then you'll need to connect to the USyd internet network _before_ you can connect to Artemis.
+You will receive a message saying:
+```
+The authenticity of host '146.118.67.137 (146.118.67.137)' can't be established.
+```
+Remember your host address will be different than the one above. There will then be a message saying:
+```
+Are you sure you want to continue connecting (yes/no)?
+```
+If you are sure (and/or confirm the fingerprint), answer ‘yes’ to continue. It will then give a warning:
+```
+Warning: Permanently added '146.118.67.137' (ECDSA) to the list of known hosts.
+```
+```
+Enter password:
+```
+Meaning that next time you log in using this key and IP address you won’t receive this message. Having done that, your terminal should then display something like that shown in the figure below:
 
-There are a couple ways to do this:
+<figure>
+  <img src="{{ page.root }}/fig/Nimbus_login_screen.png" style="margin:10px;height:400px"/>
+</figure><br>
 
-## A. The USyd VPN
+**Congratulations, you have now successfully logged on to your instance!**
 
-**VPN** (Virtual Private Network) is a protocol that allows you to tap into a local private network remotely. Follow USyd ICT's instructions [on Service Now](https://sydneyuni.service-now.com/sm?id=kb_article_view&sysparm_article=KB0011049&sys_kb_id=9e86e1a3dbdf0c50e35b89e4059619b9). Once you've connected to the Cisco Anyconnect VPN, the above connection methods will work, just as though you were on-campus.
-
-## B. Use the Artemis Jump server
-
-Artemis provides a 'gateway' server, called **Jump**, that allows connections from outside the University network, and is itself on the network. From the Jump server, you can then connect to Artemis directly. If using the Jump server, you will need to edit the **host address** used in the instructions above:
-
-* Instead of **hpc.sydney.edu.au** _use_ **jump.research.sydney.edu.au**
-
-This will connect you to Jump, rather than Artemis itself. You can then connect to Artemis directly via **SSH**. See [Episode 1 of the _Introduction to Artemis HPC_ course]({{ site.sih_pages }}/training.artemis.introhpc/01-intro).
-
-
-# 4. Graphical login nodes (Optional advanced connection)
-
-There is one final way to access Artemis, and that is using our _graphical login nodes_. These special are graphics-enabled login servers which host 'NoMachine', a kind of remote desktop service.
-
-To use the graphical login nodes:
-* Download and install the [NoMachine Enterprise Client](https://pages.github.sydney.edu.au/rc/Artemis-HPC-glogin/) for your operating system. Please don't download the client from NoMachine directly, as their current version may not work with Artemis.
-* If you're using MacOS, you need to install [XQuartz](https://www.xquartz.org/).
-* Download the [glogin.nxs](https://pages.github.sydney.edu.au/rc/Artemis-HPC-glogin/glogin.nxs) session file to your computer.
-
-To connect:
-* Double-click or run the **glogin.nxs** shortcut you downloaded (it will open NoMachine Client).
-* A NoMachine window should start, asking for a username and password.
-* Replace “YOUR_UNIKEY” with your UniKey, then enter your UniKey password in the password field, then click ‘OK’.
-* A short while later, an Artemis terminal window should open.
-
-
-<br>
 
 {% include links.md %}
