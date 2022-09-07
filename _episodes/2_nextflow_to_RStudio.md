@@ -41,12 +41,11 @@ PASSWORD='abc' singularity exec -B /tmp/rstudio-server:/var/lib/rstudio-server -
 You should not see any output at this point, except a "running" command, i.e. the port is forwarded and running.
 
 #### Step2: Open RStudio from a browser (On your local machine)
-```
-- Open up a browser window (IMPORTANT: Firefox does not work. Use Chrome or Safari.)
-- Go to 146.118.XX.XX:8787
-- Enter the username, which is your image operating system, e.g. ubuntu.
-- Enter the password, which in this example is abc.
+- Open up a browser window (__IMPORTANT__: Firefox does not work. Use Chrome or Safari.)
+- Type `146.118.XX.XX:8787` in your browser where the XX.XX will be replaced by your IP specific digits. Press enter. 
+- Enter the username, which is your image operating system, which is `ubuntu`.
+- Enter the password, which in this example is `abc`.
 - Run your R commands as you normally would. All output is saved to the directory you have chosen to bind-mount in the RStudio server command.
 - To end the session, simply exit from the browser. To also end the session on your Nimbus instance, run the following: lsof -ti:8787 | xargs kill -9
-```
+
 
