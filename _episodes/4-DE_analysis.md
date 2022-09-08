@@ -196,7 +196,6 @@ p_site_Krt2
 
 > ## Challenge #1
 > - Can you tell if the gene `Echdc3` is differentially expressed? If so, can you plot it as above?
-> - Do yoiu think the transformation has helped?
 > {: .language-bash}
 {: .solution}
 
