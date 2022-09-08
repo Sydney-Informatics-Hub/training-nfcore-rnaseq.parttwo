@@ -160,13 +160,13 @@ volcanoplot(resdata, lfcthresh=1, sigthresh=0.05, textcx=.8, xlim=c(-2.3, 2),yli
 ```{r}
 dds_orig <- DESeqDataSetFromMatrix(countData = counttable, colData = colData,design = ~condition)
 
-# IGFBP5
+# Sp110
 p_site_Sp110<-plotCounts(dds_orig, gene="Sp110", intgroup = "condition", returnData = TRUE) %>%
 ggplot() + aes(dds_orig$condition, count) + geom_boxplot(aes(fill=dds_orig$condition)) + geom_jitter(color="black", size=0.6, alpha=0.9) + scale_y_log10() + theme_bw()+ggtitle("Sp110")+ theme(legend.position = "none")
 p_site_Sp110
 ```
 <p align="center">
-  <img src="{{ page.root }}/fig/IGFBP5.png" style="margin:10px;height:350px"/>
+  <img src="{{ page.root }}/fig/Sp110.png" style="margin:10px;height:350px"/>
 </p>
 
 ```{r}
@@ -177,7 +177,7 @@ p_site_Krt2
 ```
 
 <p align="center">
-  <img src="{{ page.root }}/fig/IGFBP5.png" style="margin:10px;height:350px"/>
+  <img src="{{ page.root }}/fig/Krt2.png" style="margin:10px;height:350px"/>
 </p>
 
 
