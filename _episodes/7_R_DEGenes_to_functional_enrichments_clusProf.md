@@ -108,7 +108,7 @@ heatplot(ego.up)
 
 
 > ## Big Challenge :-)
-> - Can you generate simialar plots for genes which are UP-regulated in WT?
+> - Can you generate similar plots for genes which are UP-regulated in WT?
 > - Which parameter needs to be replaced?
 > {: .language-bash}
 {: .solution}
