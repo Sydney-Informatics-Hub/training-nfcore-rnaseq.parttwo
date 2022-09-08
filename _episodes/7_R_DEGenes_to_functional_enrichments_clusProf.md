@@ -13,6 +13,20 @@ keypoints:
 - XXX
 ---
 
+
+### Tidy and annotate results
+- Ordering by padj value
+- Get gene names for ensembl IDs.
+
+```{r}
+# https://github.com/stephenturner/annotables
+# grch38 comes from library(annotables)
+res_tidy.DE = tidy.DESeqResults(resSig005_subset)
+res_tidy.DE <- res_tidy.DE %>% arrange(p.adjusted) %>% inner_join(grcm38, by = c(gene = "symbol")) %>% dplyr::select(gene,baseMean, estimate, stderror, statistic, p.value, p.adjusted) 
+#res_tidy.DE
+```
+
+
 ### ClusterProfiler for Gene Ontology (GO) over-representation analysis 
 - We will be using the R-package clusterProfiler to perform over-representation analysis on GO terms. 
 - The tool takes as input a list of significant genes (DEGs in this case) and a background gene list to perform statistical enrichment analysis using hypergeometric testing.
