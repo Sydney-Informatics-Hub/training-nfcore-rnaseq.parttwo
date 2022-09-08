@@ -34,9 +34,10 @@ This is a two step process
 
 #### Step1: Run the rserver command (On the Nimbus VM)
 ```
-# First, create a temporary rstudio-server  folder on your instance:
+# Create a temporary rstudio-server  folder on your instance:
 mkdir -p /tmp/rstudio-server
-PASSWORD='abc' singularity exec -B /tmp/rstudio-server:/var/lib/rstudio-server -B /tmp/rstudio-server:/var/run/rstudio-server -B ~/base_directory/working_directory:/home rstudio_4.1.0.sif rserver --auth-none=0 --auth-pam-helper-path=pam-helper --server-user ubuntu
+
+PASSWORD='abc' singularity exec -B /tmp/rstudio-server:/var/lib/rstudio-server -B /tmp/rstudio-server:/var/run/rstudio-server -B ~/base_directory/working_directory:/home /cvmfs/containers.biocommons.aarnet.edu.au/r/n/rnaseq_rstudio.sif rserver --auth-none=0 --auth-pam-helper-path=pam-helper --server-user ubuntu
 ```
 You should not see any output at this point, except a "running" command, i.e. the port is forwarded and running.
 
