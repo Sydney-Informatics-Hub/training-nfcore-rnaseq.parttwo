@@ -155,6 +155,20 @@ volcanoplot(resdata, lfcthresh=1, sigthresh=0.05, textcx=.8, xlim=c(-2.3, 2),yli
   <p align="center">
   <img src="{{ page.root }}/fig/volcano_plot_alternate.png" style="margin:10px;height:350px"/>
   </p>
+  
+  
+#### Tidy and annotate results
+- Ordering by padj value
+- Get gene names for ensembl IDs.
+
+```{r}
+# https://github.com/stephenturner/annotables
+# grch38 comes from library(annotables)
+res_tidy.DE = tidy.DESeqResults(resSig005_subset)
+res_tidy.DE <- res_tidy.DE %>% arrange(p.adjusted) %>% inner_join(grcm38, by = c(gene = "symbol")) %>% dplyr::select(gene,baseMean, estimate, stderror, statistic, p.value, p.adjusted) 
+#res_tidy.DE
+```
+  
 
 #### Visualise a few differentially expressed (DE) genes
 ```{r}
@@ -179,6 +193,12 @@ p_site_Krt2
 <p align="center">
   <img src="{{ page.root }}/fig/Krt2.png" style="margin:10px;height:350px"/>
 </p>
+
+> ## Challenge #1
+> - Can you tell if the gene `Echdc3` is differentially expressed? If so, can you plot it as above?
+> - Do yoiu think the transformation has helped?
+> {: .language-bash}
+{: .solution}
 
 
 
