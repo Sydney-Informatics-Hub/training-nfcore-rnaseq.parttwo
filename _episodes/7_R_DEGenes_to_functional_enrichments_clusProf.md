@@ -46,7 +46,7 @@ sig.dn.LFC <- sort(sig.dn.LFC, decreasing = TRUE)
 
 ### Genes Down-regulated in WT
 
-### The function enrichGO()
+#### The function enrichGO()
 The clusterProfiler package implements enrichGO() for gene ontology over-representation test.
 
 ```{r}
@@ -91,7 +91,7 @@ cnetplot(ego.up,
  showCategory = 5,cex_label_category=1.2,shadowtext='category')
 ```
 <p align="center">
-  <img src="{{ page.root }}/fig/HeatMap_Down_in_WT.png" style="margin:10px;height:350px"/>
+  <img src="{{ page.root }}/fig/cnetPlot_DownInWT.png" style="margin:10px;height:350px"/>
   </p>
   
 #### Heatmap-like functional classification
