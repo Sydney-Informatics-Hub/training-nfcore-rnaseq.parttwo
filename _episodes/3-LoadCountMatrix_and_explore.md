@@ -114,13 +114,12 @@ counttable<-counttable[,c("WT1","WT2","WT3","KO1","KO2","KO3")]
 #### Box plot
 - A quick look at distribution of the data across sample using box plots.
 
-```{r, fig.width=10}
+```{r}
 boxplot(log2((counttable)+1),las=3, col="red")
 ```
 
 <p align="center">
-  <img src="{{ page.root }}/fig/box_plot_orig.png" style="margin:10px;height:350px"/>
-  </p>
+  <img src="{{ page.root }}/fig/box_plot_orig.png" style="margin:10px;height:350px"/></p>
 
 
 #### What is a DESeq2 object?
