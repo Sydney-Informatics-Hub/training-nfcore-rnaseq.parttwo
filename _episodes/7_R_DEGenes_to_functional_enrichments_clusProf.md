@@ -14,26 +14,13 @@ keypoints:
 ---
 
 
-### Tidy and annotate results
-- Ordering by padj value
-- Get gene names for ensembl IDs.
-
-```{r}
-# https://github.com/stephenturner/annotables
-# grch38 comes from library(annotables)
-res_tidy.DE = tidy.DESeqResults(resSig005_subset)
-res_tidy.DE <- res_tidy.DE %>% arrange(p.adjusted) %>% inner_join(grcm38, by = c(gene = "symbol")) %>% dplyr::select(gene,baseMean, estimate, stderror, statistic, p.value, p.adjusted) 
-#res_tidy.DE
-```
-
-
-### ClusterProfiler for Gene Ontology (GO) over-representation analysis 
+### Gene Ontology (GO) over-representation analysis 
 - We will be using the R-package clusterProfiler to perform over-representation analysis on GO terms. 
 - The tool takes as input a list of significant genes (DEGs in this case) and a background gene list to perform statistical enrichment analysis using hypergeometric testing.
 - The basic arguments allow the user to select the appropriate organism and GO ontology (BP, CC, MF) to test.
 
-- Prepare input. 
-- Filter for significant up and down regulated genes by P adjust and log fold change. 
+#### Prepare input and filter for up and down regulated genes
+- Filter by padjust and log fold change. 
 
 ```
 # P adj < 0.05 
@@ -59,12 +46,9 @@ sig.dn.LFC <- sort(sig.dn.LFC, decreasing = TRUE)
 
 ### Genes Down-regulated in WT
 
+### The function enrichGO()
+The clusterProfiler package implements enrichGO() for gene ontology over-representation test.
 
-### GO over-representation analysis
-- The clusterProfiler package implements enrichGO() for gene ontology over-representation test.
-- Explanation 
-- Observation 1
-- Observation 2
 ```{r}
 ego.up <- enrichGO(gene = names(sig.up.LFC),
                       OrgDb = org.Mm.eg.db, 
@@ -75,6 +59,59 @@ ego.up <- enrichGO(gene = names(sig.up.LFC),
                       pvalueCutoff = 0.05, 
                       qvalueCutoff = 0.2)
 ```
+#### Bar plot {r, fig.height=7, fig.width=6}
+- Bar plot is the most widely used method to visualize enriched terms. 
+- It depicts the enrichment scores (e.g. p-values) and gene count or ratio as bar height and color.
+```{r, fig.height=7, fig.width=6}
+barplot(ego.up, showCategory=20)
+```
+
+ <p align="center">
+  <img src="{{ page.root }}/fig/BarPlot_Down_in_WT.png" style="margin:10px;height:350px"/>
+  </p>
+
+#### Dot plot
+- A Dot plot is similar to a scatter plot and bar plot with the capability to encode another score as dot size.
+- In R the dot plot displays the index (each category) in the vertical axis and the corresponding value in the horizontal axis, so you can see the value of each observation following a horizontal line from the label.
+```{r, fig.height=7, fig.width=6}
+dotplot(ego.up, showCategory=20,font.size = 10)
+```
+ <p align="center">
+  <img src="{{ page.root }}/fig/DotPlot_Down_in_WT.png" style="margin:10px;height:350px"/>
+  </p>
+  
+#### cnetplot
+- Both the barplot and dotplot only displayed most significant enriched terms, while users may want to know which genes are involved in these significant terms. 
+- The cnetplot depicts the linkages of genes and biological concepts (e.g. GO terms or KEGG pathways) as a network.
+```{r, fig.height=5, fig.width=8}
+cnetplot(ego.up, 
+ categorySize="pvalue", 
+ foldChange=sig.up.LFC,
+ cex_label_gene = 1,
+ showCategory = 5,cex_label_category=1.2,shadowtext='category')
+```
+<p align="center">
+  <img src="{{ page.root }}/fig/HeatMap_Down_in_WT.png" style="margin:10px;height:350px"/>
+  </p>
+  
+#### Heatmap-like functional classification
+- The heatplot is similar to cnetplot, while displaying the relationships as a heatmap. 
+- The gene-concept network may become too complicated if user want to show a large number significant terms. 
+- The heatplot can simplify the result and more easy to identify expression patterns.
+```{r}
+heatplot(ego.up)
+```
+
+<p align="center">
+  <img src="{{ page.root }}/fig/HeatMap_Down_in_WT.png" style="margin:10px;height:350px"/>
+</p>
+
+
+> ## Big Challenge :-)
+> - Can you generate simialar plots for genes which are UP-regulated in WT?
+> - Which parameter needs to be replaced?
+> {: .language-bash}
+{: .solution}
 
 #### Html Results  
 __(For reference only)__ till I update the enrichment results pages
